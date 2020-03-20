@@ -13,7 +13,8 @@ script:
 
 deploy:
     provider: pages
-    api_key: $TRAVIS_GITHUB_TOKEN
+    github_token: $TRAVIS_GITHUB_TOKEN
+    target_branch: master
     file_glob: true
     file: indices/*
     cleanup: true
