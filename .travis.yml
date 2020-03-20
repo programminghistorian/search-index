@@ -16,6 +16,6 @@ deploy:
     api_key: $TRAVIS_GITHUB_TOKEN
     file_glob: true
     file: indices/*
-    skip_cleanup: true
+    cleanup: true
     on:
         branch: master
