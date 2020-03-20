@@ -1,15 +1,14 @@
 'use strict';
 const lunr = require('lunr');
 const fs = require('fs');
+const axios = require('axios');
 
-let searchCorpora = ['./fr/search.json', './es/search.json', './en/search.json'];
+let searchCorpora = ['https://programminghistorian.org/en/search.json', 'https://programminghistorian.org/fr/search.json', 'https://programminghistorian.org/es/search.json'];
 
 searchCorpora.map(searchFile => {
     let language = searchFile.split('/').reverse()[1].toUpperCase();
-    fs.readFile(searchFile, 'utf8', (err, data) => {
-        if (err) throw err;
-        let searchBuilder = JSON.parse(data);
-
+    axios.get(searchFile).then((response)=>{
+        let searchBuilder = response.data;
         const idx = lunr((builder) => {
             builder.ref('id');
             builder.field('title');
@@ -27,8 +26,8 @@ searchCorpora.map(searchFile => {
         }
 
         fs.writeFileSync(`./indices/index${language}.json`, JSON.stringify(idx));
-
+    }).catch((err) => {
+        console.log(err);
     });
 });
-
 
