@@ -1,0 +1,15 @@
+{
+  "name": "search-index",
+  "version": "1.0.0",
+  "description": "Project to build PH Search Index",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lunr": "^2.3.8"
+  }
+}
