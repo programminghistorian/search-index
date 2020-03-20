@@ -15,9 +15,7 @@ deploy:
     provider: pages
     github_token: $TRAVIS_GITHUB_TOKEN
     target_branch: master
-    # file_glob: true
-    # file: indices/*
-    # cleanup: true
     edge: true
+    cleanup: true
     on:
         branch: master

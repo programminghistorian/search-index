@@ -14,9 +14,9 @@ const idxEn = lunr((builder) => {
     }, builder)
 });
 
-// let dir = './indices';
-// if (!fs.existsSync(dir)) {
-//     fs.mkdirSync(dir);
-// }
+let dir = './indices';
+if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+}
 
-fs.writeFileSync('indexEN.json', JSON.stringify(idxEn));
+fs.writeFileSync('./indices/indexEN.json', JSON.stringify(idxEn));
