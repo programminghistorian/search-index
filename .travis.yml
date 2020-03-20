@@ -12,4 +12,8 @@ script:
     - node index.js
 
 deploy:
+    provider: releases
+    api_key: "GITHUB_OAUTH_TOKEN"
+    file_glob: true
+    file: indices/*
     skip_cleanup: true

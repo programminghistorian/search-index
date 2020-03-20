@@ -1,9 +1,8 @@
 'use strict';
 const lunr = require('lunr');
-let searchEn = require('./search.json');
 const fs = require('fs');
 
-
+let searchEn = require('./search.json');
 const idxEn = lunr((builder) => {
     builder.ref('id');
     builder.field('title');
@@ -15,4 +14,9 @@ const idxEn = lunr((builder) => {
     }, builder)
 });
 
-fs.writeFileSync('indexEN.json', JSON.stringify(idxEn));
+let dir = './indices';
+if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+}
+
+fs.writeFileSync('./indices/indexEN.json', JSON.stringify(idxEn));
