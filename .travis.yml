@@ -17,3 +17,5 @@ deploy:
     file_glob: true
     file: indices/*
     skip_cleanup: true
+    on:
+        branch: master
