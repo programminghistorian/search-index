@@ -10,3 +10,6 @@ before_script:
     - npm install
 script:
     - node index.js
+
+deploy:
+    skip_cleanup: true
