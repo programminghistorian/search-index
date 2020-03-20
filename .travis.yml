@@ -17,7 +17,7 @@ deploy:
     target_branch: master
     # file_glob: true
     # file: indices/*
-    cleanup: true
+    # cleanup: true
     edge: true
     on:
         branch: master
