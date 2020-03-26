@@ -11,6 +11,7 @@ searchCorpora.map(searchFile => {
         let searchBuilder = response.data;
         const idx = lunr((builder) => {
             builder.ref('id');
+            builder.ref('url');
             builder.field('title');
             builder.field('body');
             builder.metadataWhitelist = ['position']
