@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
-    "lunr": "^2.3.8"
+    "lunr": "^2.3.8",
+    "lunr-languages": "^1.4.0"
   }
 }
