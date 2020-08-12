@@ -3,12 +3,13 @@ const lunr = require('lunr')
 require("lunr-languages/lunr.stemmer.support")(lunr)
 require('lunr-languages/lunr.fr')(lunr)
 require('lunr-languages/lunr.es')(lunr)
+require('lunr-languages/lunr.pt')(lunr)
 
 const fs = require('fs');
 const axios = require('axios');
 
 
-let searchCorpora = ['https://programminghistorian.org/en/search.json', 'https://programminghistorian.org/fr/search.json', 'https://programminghistorian.org/es/search.json'];
+let searchCorpora = ['https://programminghistorian.org/en/search.json', 'https://programminghistorian.org/fr/search.json', 'https://programminghistorian.org/es/search.json', 'https://programminghistorian.org/pt/search.json'];
 
 searchCorpora.map(searchFile => {
     let language = searchFile.split('/').reverse()[1];
