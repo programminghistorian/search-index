@@ -13,7 +13,7 @@ let searchCorpora = ['https://programminghistorian.org/en/search.json', 'https:/
 
 searchCorpora.map(searchFile => {
     let language = searchFile.split('/').reverse()[1];
-
+    console.log('language', language);
     axios.get(searchFile).then((response)=>{
         let searchBuilder = response.data;
         const idx = lunr((builder) => {
