@@ -9,19 +9,23 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+      - name: Create search indices
+        uses: actions/setup-node@v2
         with:
           node-version: '12'
-      - name: Create search indices
-      - run: npm install
-      - run: node index.js
+        run: |
+          npm install
+          node index.js
       - name: Commit files
-      - run: git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      - run: git config --local user.name "github-actions[bot]"
-      - run: git commit -m "Add changes" -a
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "Add changes" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
