@@ -8,6 +8,16 @@ require('lunr-languages/lunr.pt')(lunr)
 const fs = require('fs');
 const axios = require('axios');
 
+const dir = './indices';
+try {
+    fs.rmdirSync(dir, {
+        recursive: true
+    });
+    fs.mkdirSync(dir);
+    console.log(`${dir} is deleted and remade!`);
+} catch (err) {
+    console.error(`Error while deleting ${dir}.`);
+}
 
 let searchCorpora = ['https://programminghistorian.org/en/search.json', 'https://programminghistorian.org/fr/search.json', 'https://programminghistorian.org/es/search.json', 'https://programminghistorian.org/pt/search.json'];
 
@@ -28,11 +38,6 @@ searchCorpora.map(searchFile => {
                 builder.add(doc)
             }, builder)
         });
-
-        let dir = './indices';
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
-        }
 
         fs.writeFileSync(`./indices/index${language.toUpperCase()}.json`, JSON.stringify(idx));
     }).catch((err) => {
