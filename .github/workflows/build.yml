@@ -27,8 +27,15 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add .
           git commit -m "Add search indices"
-      - name: Push changes
+      - name: Push changes (not PR)
+        if: github.event_name != 'pull_request'
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push changes (PR)
+        if: github.event_name == 'pull_request'
+        uses: ad-m/github-push-action@master
+        with:
+          branch: refs/heads/${{ github.head_ref }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
