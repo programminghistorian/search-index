@@ -10,11 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Create search indices
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node Version
         uses: actions/setup-node@v2
         with:
           node-version: '12'
+      - name: Created Indices
         run: |
           npm install
           node index.js
