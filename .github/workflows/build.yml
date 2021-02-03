@@ -1,6 +1,6 @@
 name: NPM CI
 
-on: [pull_request]
+on: [push]
   # schedule:
   #   - cron: '0 0 * * 0' # weekly
 
