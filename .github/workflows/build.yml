@@ -1,6 +1,9 @@
 name: NPM CI
 
-on: [push]
+on: 
+  push:
+  branches: [master]
+  # [push]
   # schedule:
   #   - cron: '0 0 * * 0' # weekly
 
@@ -27,15 +30,21 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add .
           git commit -m "Add search indices"
-      - name: Push changes (not PR)
-        if: github.event_name != 'pull_request'
+      - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          branch: ${{ github.ref }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Push changes (PR)
-        if: github.event_name == 'pull_request'
-        uses: ad-m/github-push-action@master
-        with:
-          branch: refs/heads/${{ github.head_ref }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
+
+      # - name: Push changes (not PR)
+      #   if: github.event_name != 'pull_request'
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     branch: ${{ github.ref }}
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Push changes (PR)
+      #   if: github.event_name == 'pull_request'
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     branch: refs/heads/${{ github.head_ref }}
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
