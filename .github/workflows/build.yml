@@ -1,4 +1,4 @@
-name: NPM CI
+name: build_search_indices
 
 on: 
   push:
