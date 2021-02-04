@@ -1,4 +1,4 @@
-![Current Build Status](https://github.com/programminghistorian/search-index/.github/workflows/build_search_indices/badge.svg?branch=master)
+![](https://img.shields.io/github/workflow/status/programminghistorian/search-index/build_search_indices)
 
 ### Script Index
 
