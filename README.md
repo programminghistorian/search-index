@@ -1,4 +1,5 @@
-![Current Build Status](https://github.com/programminghistorian/search-index/.github/workflows/build.yml/badge.svg)
+![Current Build Status](https://github.com/programminghistorian/search-index/workflows/build/badge.svg?branch=master)
+
 
 ### Script Index
 
