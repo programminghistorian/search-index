@@ -1,9 +1,9 @@
 name: NPM CI
 
-on: [push]
-  # [push]
-  # schedule:
-  #   - cron: '0 0 * * 0' # weekly
+on: 
+  push:
+  repository_dispatch:
+    types: [trigger-search-build]
 
 jobs:
   build:
@@ -12,6 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
+          ref: ${{ github.event.client_payload.ref }}
           persist-credentials: false
           fetch-depth: 0
       - name: Setup Node Version
@@ -33,16 +34,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
-
-      # - name: Push changes (not PR)
-      #   if: github.event_name != 'pull_request'
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     branch: ${{ github.ref }}
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      # - name: Push changes (PR)
-      #   if: github.event_name == 'pull_request'
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     branch: refs/heads/${{ github.head_ref }}
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
